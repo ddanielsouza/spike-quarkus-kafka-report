@@ -28,20 +28,6 @@ public class OpportunityController {
     }
 
     @GET
-    @Path("/report/csv")
-    @Produces(MediaType.APPLICATION_OCTET_STREAM)
-    @RolesAllowed({"manager", "user"})
-    public Response generateReportCsv(){
-        final var csv = this.opportunityService.generateCSVOpportunityReport();
-        final var fileNameHeader = String
-                .format("attachment; filename=%s--oportunidades-vendas.csv", LocalDateTime.now().toString());
-
-        return Response.ok(csv, MediaType.APPLICATION_OCTET_STREAM)
-                .header("content-disposition", fileNameHeader)
-                .build();
-    }
-
-    @GET
     @Path("/report")
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"manager", "user"})

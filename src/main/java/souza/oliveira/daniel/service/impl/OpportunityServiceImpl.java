@@ -12,9 +12,6 @@ import souza.oliveira.daniel.entity.QuotationEntity;
 import souza.oliveira.daniel.repository.OpportunityRepository;
 import souza.oliveira.daniel.repository.QuotationRepository;
 import souza.oliveira.daniel.service.OpportunityService;
-import souza.oliveira.daniel.utils.CSVHelper;
-
-import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -79,11 +76,5 @@ public class OpportunityServiceImpl implements OpportunityService {
                         .lastDollarQuotation(item.getLastDollarQuotation())
                         .build())
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public ByteArrayInputStream generateCSVOpportunityReport(){
-        final var opportunities = this.generateOpportunityData();
-        return CSVHelper.opportunitiesToCSV(opportunities);
     }
 }

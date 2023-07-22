@@ -13,5 +13,4 @@ public interface OpportunityService {
     void buildOpportunity(ProposalDTO proposal);
     void saveQuotation(QuotationDTO quotation);
     List<OpportunityDTO> generateOpportunityData();
-    ByteArrayInputStream generateCSVOpportunityReport();
 }
