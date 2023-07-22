@@ -4,6 +4,7 @@ import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import org.eclipse.microprofile.opentracing.Traced;
 import souza.oliveira.daniel.dto.OpportunityDTO;
 import souza.oliveira.daniel.dto.ProposalDTO;
 import souza.oliveira.daniel.dto.QuotationDTO;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
+@Traced
 public class OpportunityServiceImpl implements OpportunityService {
 
     private final QuotationRepository quotationRepository;
