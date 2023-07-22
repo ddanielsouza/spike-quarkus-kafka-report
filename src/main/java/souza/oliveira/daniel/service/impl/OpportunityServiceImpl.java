@@ -68,12 +68,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 
     @Override
     public List<OpportunityDTO> generateOpportunityData() {
-        return null;
-    }
-
-    @Override
-    public ByteArrayInputStream generateCSVOpportunityReport(){
-        final var opportunities = this.opportunityRepository
+        return this.opportunityRepository
                 .findAll(Sort.descending("date"))
                 .list()
                 .stream()
@@ -84,7 +79,11 @@ public class OpportunityServiceImpl implements OpportunityService {
                         .lastDollarQuotation(item.getLastDollarQuotation())
                         .build())
                 .collect(Collectors.toList());
+    }
 
+    @Override
+    public ByteArrayInputStream generateCSVOpportunityReport(){
+        final var opportunities = this.generateOpportunityData();
         return CSVHelper.opportunitiesToCSV(opportunities);
     }
 }
